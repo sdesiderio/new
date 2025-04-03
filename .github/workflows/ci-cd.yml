@@ -32,7 +32,8 @@ jobs:
     - name: Set up kubectl for Minikube
       run: |
         echo "Setting up kubectl for Minikube"
-        echo $(minikube kubectl --config ~/.minikube/profiles/minikube/config) > ~/.kube/config
+        mkdir -p ~/.kube
+        echo "$(minikube -p minikube kubeconfig)" > ~/.kube/config
 
     # Deploy the application to Kubernetes
     - name: Deploy the application to Kubernetes
