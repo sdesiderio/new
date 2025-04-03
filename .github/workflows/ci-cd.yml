@@ -28,6 +28,12 @@ jobs:
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker push ${{ secrets.DOCKER_USERNAME }}/my-node-app:latest
 
+    # Setup kubectl for Minikube
+    - name: Set up kubectl for Minikube
+      run: |
+        echo "Setting up kubectl for Minikube"
+        echo $(minikube kubectl --config ~/.minikube/profiles/minikube/config) > ~/.kube/config
+
     # Deploy the application to Kubernetes
     - name: Deploy the application to Kubernetes
       run: |
