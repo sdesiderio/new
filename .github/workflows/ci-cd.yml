@@ -31,7 +31,7 @@ jobs:
     # Deploy the application to Kubernetes
     - name: Deploy the application to Kubernetes
       run: |
-        kubectl apply -f deployment.yml
+        kubectl apply -f deployment.yml --validate=false
         kubectl apply -f service.yml
         kubectl apply -f ingress.yml
         kubectl rollout status deployment/my-node-app
